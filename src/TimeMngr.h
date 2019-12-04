@@ -5,7 +5,7 @@
 
 #include "Signals.h"
 
-class MyTimer
+class TimeMngr
 {
  protected:
 	 unsigned long pMills = 0;
@@ -15,11 +15,11 @@ class MyTimer
  public:
 	Signals<> SignalTimeout;
 
-	MyTimer() {
+	TimeMngr() {
 		enable = false;
 	}
 
-	MyTimer(unsigned long intervalMs, bool tmrStart)
+	TimeMngr(unsigned long intervalMs, bool tmrStart)
 	{
 		interval = intervalMs;
 		pMills = millis();
