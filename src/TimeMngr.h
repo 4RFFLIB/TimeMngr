@@ -3,14 +3,7 @@
 #ifndef _MYTIMER_h
 #define _MYTIMER_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
-
 #include "Signals.h"
-#include "Test.h"
 
 
 class MyTimer
