@@ -5,7 +5,6 @@
 
 #include "Signals.h"
 
-
 class MyTimer
 {
  protected:
@@ -15,11 +14,6 @@ class MyTimer
 
  public:
 	Signals<> SignalTimeout;
-
-	//TestClass<void> TestSignal1;
-	//TestClass<int> TestSignal2;
-	//TestClass<int,int> TestSignal3;
-
 
 	MyTimer() {
 		enable = false;
@@ -55,8 +49,6 @@ class MyTimer
 		}
 	}
 };
-
-//extern MyTimerClass MyTimer;
 
 #endif
 
