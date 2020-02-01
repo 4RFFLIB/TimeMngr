@@ -11,4 +11,8 @@ start		KEYWORD2
 stop		KEYWORD2
 tick		KEYWORD2
 
+attachCallback KEYWORD2
+detachCallback KEYWORD2
+tickWithCallback KEYWORD2
+
 SignalTimeout	KEYWORD2
