@@ -1,0 +1,14 @@
+#######################################
+# Data types (KEYWORD1)
+#######################################
+TimeMngr		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+setInterval	KEYWORD2
+start		KEYWORD2
+stop		KEYWORD2
+tick		KEYWORD2
+
+SignalTimeout	KEYWORD2
