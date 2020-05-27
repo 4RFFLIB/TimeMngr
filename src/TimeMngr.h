@@ -13,6 +13,7 @@ class TimeMngr
 	 unsigned long pMills = 0;
 	 unsigned long	interval;
 	 bool enable = false;
+	 bool flag = false;
 
  public:
 	Signals<> SignalTimeout;
@@ -57,6 +58,10 @@ class TimeMngr
 		enable = false;
 	}
 
+	bool status(void){
+		return flag;
+	}
+
 	void tick(void) {
 		if (enable) {
 			unsigned long cMills = millis();
@@ -64,6 +69,19 @@ class TimeMngr
 				pMills = cMills;
 				SignalTimeout.emit();
 			}
+		}
+	}
+
+	bool tickFlag(void) {
+		if (enable) {
+			unsigned long cMills = millis();
+			if (cMills - pMills >= interval) {
+				pMills = cMills;
+				flag = 1;
+				return 1;
+			}
+			flag = 0;
+			return 0;
 		}
 	}
 	
