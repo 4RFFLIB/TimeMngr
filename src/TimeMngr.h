@@ -37,6 +37,10 @@ class TimeMngr
 		callback = cb;
 	}
 
+	bool getEnable(){
+		return enable;
+	}
+
 	void setInterval(unsigned long milisec) {
 		interval = milisec;
 	}
@@ -51,6 +55,10 @@ class TimeMngr
 
 	void start(void) {
 		enable = true;
+		pMills = millis();
+	}
+
+	void reset(){
 		pMills = millis();
 	}
 
