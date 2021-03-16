@@ -43,6 +43,10 @@ public:
 		callback = cb;
 	}
 
+	bool getEnable(){
+		return enable;
+	}
+
 	void setInterval(unsigned long milisec) {
 		interval = milisec;
 	}
@@ -57,6 +61,10 @@ public:
 
 	void start(void) {
 		enable = true;
+		pMills = millis();
+	}
+
+	void reset(){
 		pMills = millis();
 	}
 
