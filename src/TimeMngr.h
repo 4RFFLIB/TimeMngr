@@ -7,19 +7,25 @@
 
 class TimeMngr
 {
- protected:
-	 typedef void(*CALLBACK_FUNC)(void);
-	 CALLBACK_FUNC callback;
-	 unsigned long pMills = 0;
-	 unsigned long	interval;
-	 bool enable = false;
-	 bool flag = false;
+protected:
+	typedef void(*CALLBACK_FUNC)(void);
+	CALLBACK_FUNC callback;
+	unsigned long pMills = 0;
+	unsigned long	interval;
+	bool enable = false;
+	bool flag = false;
 
- public:
+public:
 	Signals<> SignalTimeout;
 
 	TimeMngr() {
 		enable = false;
+	}
+
+	TimeMngr(CALLBACK_FUNC cb)
+	{
+		enable = false;
+		callback = cb;
 	}
 
 	TimeMngr(unsigned long intervalMs, bool tmrStart)
@@ -28,7 +34,7 @@ class TimeMngr
 		pMills = millis();
 		enable = tmrStart;
 	}
-	
+
 	TimeMngr(unsigned long intervalMs, bool tmrStart, CALLBACK_FUNC cb)
 	{
 		interval = intervalMs;
@@ -40,11 +46,11 @@ class TimeMngr
 	void setInterval(unsigned long milisec) {
 		interval = milisec;
 	}
-	
+
 	void attachCallback(CALLBACK_FUNC cb){
 		callback = cb;
 	}
-	
+
 	void detachCallback(){
 		callback = NULL;
 	}
@@ -83,8 +89,9 @@ class TimeMngr
 			flag = 0;
 			return 0;
 		}
+		return 0;
 	}
-	
+
 	void tickWithCallback(void) {
 		if (enable) {
 			unsigned long cMills = millis();
