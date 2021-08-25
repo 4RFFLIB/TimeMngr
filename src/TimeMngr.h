@@ -13,6 +13,7 @@ class TimeMngr
 	 unsigned long pMills = 0;
 	 unsigned long	interval;
 	 bool enable = false;
+	 bool oneShot = false;
 
  public:
 	Signals<> SignalTimeout;
@@ -56,12 +57,29 @@ class TimeMngr
 	void stop(void) {
 		enable = false;
 	}
+	
+	void enableOneShotMode() {
+		oneShot = true;
+	}
+
+	void disableOneShotMode() {
+		oneShot = false;
+	}
+	
+	void startOneShot(CALLBACK_FUNC startCB, CALLBACK_FUNC endCB) {
+		startCB();
+		callback = endCB;
+		start();
+	}
 
 	void tick(void) {
 		if (enable) {
 			unsigned long cMills = millis();
 			if (cMills - pMills >= interval) {
 				pMills = cMills;
+				if (oneShot) {
+					enable = false;
+				}
 				SignalTimeout.emit();
 			}
 		}
@@ -72,6 +90,9 @@ class TimeMngr
 			unsigned long cMills = millis();
 			if (cMills - pMills >= interval) {
 				pMills = cMills;
+				if (oneShot) {
+					enable = false;
+				}
 				callback();
 			}
 		}
