@@ -66,7 +66,8 @@ class TimeMngr
 		oneShot = false;
 	}
 	
-	void startOneShot(CALLBACK_FUNC startCB, CALLBACK_FUNC endCB) {
+	void startOneShot(CALLBACK_FUNC startCB, CALLBACK_FUNC endCB, unsigned long intervalMs) {
+		setInterval(intervalMs);
 		startCB();
 		callback = endCB;
 		start();
