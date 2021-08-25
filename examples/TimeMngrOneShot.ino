@@ -15,12 +15,10 @@ void loop() {
   if (Serial.available()) {
     uint8_t c = Serial.read();
     if (c == 'q') {
-      ledFlasher.setInterval(100);
-      ledFlasher.startOneShot(ledOn, ledOff);
+      ledFlasher.startOneShot(ledOn, ledOff, 100);
     }
     else if (c == 'w') {
-      ledFlasher.setInterval(1000);
-      ledFlasher.startOneShot(ledOn, ledOff);
+      ledFlasher.startOneShot(ledOn, ledOff, 1000);
     }
   }
   ledFlasher.tickWithCallback();
